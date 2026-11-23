@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website profil pribadi Bagas Andika Pratama.">
+    <title>Profil Pribadi | Bagas Andika Pratama</title>
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #dbeafe;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        header {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 28px 18px;
+        }
+        header h2 { margin: 0 0 5px; }
+        header p { margin: 0; color: #cbd5e1; }
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: #1e293b;
+            box-shadow: 0 3px 12px rgba(15, 23, 42, .15);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 9px 13px;
+            border-radius: 8px;
+            transition: background .2s, color .2s;
+        }
+        nav a:hover, nav a:focus {
+            background: #2563eb;
+            outline: none;
+        }
+        .hero {
+            text-align: center;
+            padding: 55px 20px;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+        }
+        .foto {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 18px rgba(37, 99, 235, .2);
+        }
+        h1 { margin: 0 0 10px; line-height: 1.25; }
+        .hero p { margin: 8px 0; }
+        .tombol {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 9px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background .2s, transform .2s;
+        }
+        .tombol:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .bagian {
+            width: min(900px, calc(100% - 32px));
+            margin: 25px auto;
+            padding: 28px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, .07);
+            scroll-margin-top: 75px;
+        }
+        .bagian h2 { margin-top: 0; color: #0f172a; }
+        .keahlian {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 9px 15px;
+            border-radius: 20px;
+            margin: 5px 5px 5px 0;
+            font-weight: 600;
+        }
+        .daftar-proyek {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+        .kartu-proyek {
+            background: #f8fafc;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .ikon-proyek { font-size: 35px; margin-bottom: 8px; }
+        .kartu-proyek h3 { margin: 5px 0; }
+        .kartu-proyek p { margin-bottom: 0; }
+
+        /* Galeri foto */
+        .galeri {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .galeri figure {
+            margin: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #eff6ff;
+            box-shadow: 0 3px 12px rgba(15, 23, 42, .08);
+        }
+        .galeri img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    max-height: 180px;
+    object-fit: contain;
+    background: #f1f5f9;
+    transition: transform .25s;
+}
+        .galeri figure:hover img { transform: scale(1.04); }
+        .galeri figcaption {
+            padding: 9px 11px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Formulir kontak */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .contact-form label { font-weight: 600; margin-top: 5px; }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            background: #f8fafc;
+            color: #1e293b;
+            font: inherit;
+            transition: border-color .2s, box-shadow .2s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, .15);
+            background: white;
+        }
+        .contact-form textarea { min-height: 130px; resize: vertical; }
+        .contact-form button {
+            border: 0;
+            border-radius: 9px;
+            padding: 13px 20px;
+            margin-top: 8px;
+            background: #2563eb;
+            color: white;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+        .contact-form button:hover { background: #1d4ed8; transform: translateY(-1px); }
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        footer p { margin: 0; }
+
+        /* Tampilan layar kecil / HP */
+        @media (max-width: 700px) {
+            .daftar-proyek, .galeri { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bagian { padding: 22px; }
+            .hero { padding: 42px 16px; }
+            h1 { font-size: 27px; }
+        }
+        
+/* RESPONSIVE UNTUK HP ANDROID DAN IPHONE */
+@media screen and (max-width: 600px) {
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+        font-size: 15px;
+    }
+
+    header {
+        padding: 22px 12px;
+    }
+
+    header h2 {
+        font-size: 21px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 9px;
+    }
+
+    nav a {
+        font-size: 13px;
+        padding: 9px 11px;
+        flex-shrink: 0;
+    }
+
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero h1 {
+        font-size: 23px;
+    }
+
+    .bagian {
+        width: calc(100% - 24px);
+        margin: 15px auto;
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    .daftar-proyek {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .galeri {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .galeri img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .contact-form button {
+        width: 100%;
+        padding: 14px;
+    }
+
+    footer {
+        font-size: 13px;
+        padding: 18px 10px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Website Pribadi Saya</h2>
+        <p>Selamat datang di halaman profil saya</p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang Saya</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#proyek">Proyek</a>
+        <a href="#galeri">Galeri Foto</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+    <section class="hero" id="beranda">
+        <img src="foto.jpg.png"
+     alt="Foto Profil Bagas"
+     class="foto-profil">
+        <p>Pelajar yang sedang belajar membuat website.</p>
+        <a href="#tentang" class="tombol">Kenali Saya</a>
+    </section>
+
+    <section class="bagian" id="tentang">
+        <h2>Tentang Saya</h2>
+        <p>Halo! Nama saya Bagas Andika Pratama. Saya sedang belajar teknologi, desain, dan cara membuat website menggunakan HTML dan CSS.</p>
+        <p>Saya ingin terus mengembangkan kemampuan dan menghasilkan karya yang bermanfaat.</p>
+    </section>
+
+    <section class="bagian" id="keahlian">
+        <h2>Keahlian dan Minat</h2>
+        <span class="keahlian">Desain Grafis</span>
+        <span class="keahlian">HTML</span>
+        <span class="keahlian">Fotografi</span>
+        <span class="keahlian">Editing Video</span>
+    </section>
+
+    <section class="bagian" id="proyek">
+        <h2>Proyek Saya</h2>
+        <p>Berikut beberapa karya yang sedang saya kembangkan.</p>
+        <div class="daftar-proyek">
+            <div class="kartu-proyek">
+                <div class="ikon-proyek">🎬</div>
+                <h3>Editing Video</h3>
+                <p>Membuat dan mengedit video kreatif.</p>
+            </div>
+            <div class="kartu-proyek">
+                <div class="ikon-proyek">💻</div>
+                <h3>Website</h3>
+                <p>Belajar membuat website menggunakan HTML dan CSS.</p>
+            </div>
+            <div class="kartu-proyek">
+                <div class="ikon-proyek">📷</div>
+                <h3>Fotografi</h3>
+                <p>Mengembangkan kemampuan fotografi dan editing.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bagian" id="galeri">
+        <h2>Galeri Foto</h2>
+        <p>Beberapa foto kegiatan dan karya saya.</p>
+        <div class="galeri">
+            <figure>
+                <img src="galeri1.jpg" alt="Foto kegiatan 1" loading="lazy">
+                <figcaption>Kegiatan 1</figcaption>
+            </figure>
+            <figure>
+                <img src="galeri2.jpg" alt="Foto kegiatan 2" loading="lazy">
+                <figcaption>Kegiatan 2</figcaption>
+            </figure>
+            <figure>
+                <img src="galeri3.jpg" alt="Foto karya 1" loading="lazy">
+                <figcaption>Karya 1</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="bagian" id="kontak">
+        <h2>Hubungi Saya</h2>
+        <p>Punya pertanyaan? Silakan kirim pesan kepada saya.</p>
+
+        <form action="https://formsubmit.co/andikapratamabagas614@gmail.com" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="Pesan dari Website Bagas">
+            <input type="hidden" name="_next" value="http://localhost:5500/terkirim.html">
+
+            <label for="nama">Nama Lengkap</label>
+            <input id="nama" type="text" name="nama" placeholder="Masukkan nama kamu" required>
+
+            <label for="email">Alamat Email</label>
+            <input id="email" type="email" name="email" placeholder="Masukkan email kamu" required>
+
+            <label for="subjek">Subjek</label>
+            <input id="subjek" type="text" name="subjek" placeholder="Judul pesan" required>
+
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" placeholder="Tulis pesan kamu..." required></textarea>
+
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Website Pribadi Bagas Andika Pratama</p>
+    </footer>
+</body>
+</html>
